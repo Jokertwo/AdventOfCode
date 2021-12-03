@@ -1,4 +1,4 @@
-package org.jokertwo.adventofcode.task.impl.task3;
+package org.jokertwo.adventofcode.task.impl.task2;
 
 /**
  * @author PL

@@ -1,4 +1,4 @@
-package org.jokertwo.adventofcode.task.impl.task3;
+package org.jokertwo.adventofcode.dto;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -9,21 +9,28 @@ import lombok.ToString;
 public class Position {
     private int horizontal;
     private int depth;
+    private int aim;
 
-    public Position(int horizontal, int depth) {
+    public Position(int horizontal, int depth, int aim) {
         this.horizontal = horizontal;
         this.depth = depth;
     }
 
 
-    Position setHorizontal(int horizontal) {
+    public Position setHorizontal(int horizontal) {
         this.horizontal = horizontal;
         return this;
     }
 
 
-    Position setDepth(int depth) {
+    public Position setDepth(int depth) {
         this.depth = depth;
+        return this;
+    }
+
+
+    public Position setAim(int aim) {
+        this.aim = aim;
         return this;
     }
 }

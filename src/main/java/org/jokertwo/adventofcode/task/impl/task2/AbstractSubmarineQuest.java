@@ -1,37 +1,44 @@
-package org.jokertwo.adventofcode.task.impl.task3;
+package org.jokertwo.adventofcode.task.impl.task2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Map;
 
 import org.jokertwo.adventofcode.common.FileReader;
+import org.jokertwo.adventofcode.dto.Position;
 import org.jokertwo.adventofcode.task.Task;
-import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j
-@Component
-public class SubmarineQuest implements Task {
-    private final static String FILE = "task3/resource.txt";
+public abstract class AbstractSubmarineQuest implements Task {
+
+    private final String FILE;
     private final FileReader fileReader;
     private Integer result = null;
+    private final Map<SubmarineMove, MoveFunction<Position>> functionMap;
 
-    public SubmarineQuest(FileReader fileReader) {
+    public AbstractSubmarineQuest(String FILE, FileReader fileReader) {
+        this.FILE = FILE;
         this.fileReader = fileReader;
+        functionMap = initFunctionMap();
     }
+
+
+    protected abstract Map<SubmarineMove, MoveFunction<Position>> initFunctionMap();
 
 
     @Override
     public boolean solve() {
-        Position position = new Position(0, 0);
+        Position position = new Position(0, 0, 0);
         try (BufferedReader reader = fileReader.open(FILE)) {
             String line = reader.readLine();
             while (line != null) {
                 String[] tokens = line.trim().split("\\s");
                 SubmarineMove move = SubmarineMove.valueOf(tokens[0].toUpperCase());
                 int units = Integer.parseInt(tokens[1]);
-                move.getMove().move(units, position);
+                functionMap.get(move).move(units, position);
                 line = reader.readLine();
             }
             result = position.getDepth() * position.getHorizontal();
@@ -42,18 +49,6 @@ public class SubmarineQuest implements Task {
             log.error("Unable to read file: {}", FILE, e);
         }
         return false;
-    }
-
-
-    @Override
-    public String getName() {
-        return "Task 3";
-    }
-
-
-    @Override
-    public int getOrder() {
-        return 30;
     }
 
 

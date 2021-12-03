@@ -1,4 +1,4 @@
-package org.jokertwo.adventofcode.task.impl.task2;
+package org.jokertwo.adventofcode.task.impl.task1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
