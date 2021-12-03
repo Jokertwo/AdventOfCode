@@ -22,10 +22,10 @@ public class AdventOfCodeApplication {
                 log.error("Task with order key: {} already exist, name: {}", task.getOrder(), task.getName());
                 throw new IllegalStateException("Duplicate key");
             }
-            if (task.solve()) {
-                String resultSentence = String.format("%s , result: %s", task.getName(), task.getResult());
-                results.put(task.getOrder(), resultSentence);
-            }
+            String resultSentence = String.format("%s , result: %s", task.getName(),
+                task.solve() ? task.getResult() : "ERROR");
+            results.put(task.getOrder(), resultSentence);
+
         });
         results.values().forEach(log::info);
 
