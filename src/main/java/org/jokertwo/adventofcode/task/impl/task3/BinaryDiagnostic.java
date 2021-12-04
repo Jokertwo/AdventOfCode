@@ -1,12 +1,10 @@
 package org.jokertwo.adventofcode.task.impl.task3;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.jokertwo.adventofcode.common.FileReader;
-import org.jokertwo.adventofcode.task.Task;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -14,36 +12,23 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class BinaryDiagnostic implements Task {
+public class BinaryDiagnostic extends AbstractBinaryDiagnostic {
 
     private final static String FILE = "task5/resource.txt";
-    private final FileReader fileReader;
     private Integer result;
 
     public BinaryDiagnostic(FileReader fileReader) {
-        this.fileReader = fileReader;
+        super(FILE, fileReader);
     }
 
 
     @Override
     public boolean solve() {
-        int rowCounter = 0;
-        Map<Integer, Integer> bitCounter = new HashMap<>();
-
-        try (BufferedReader reader = fileReader.open(FILE)) {
-            String line = reader.readLine();
-            while (line != null) {
-                line = line.trim();
-                for (int i = 0; i < line.length(); i++) {
-                    char bit = line.charAt(i);
-                    if (bit == '1') {
-                        int counts = bitCounter.getOrDefault(i, 0);
-                        bitCounter.put(i, ++counts);
-                    }
-                }
-                rowCounter++;
-                line = reader.readLine();
-            }
+        Map<Integer, Integer> bitCounter;
+        List<String> rows;
+        try {
+            rows = readFile();
+            bitCounter = evaluateBits(rows);
         } catch (IOException e) {
             log.error("Unable to read from file: {}", FILE, e);
             return false;
@@ -51,7 +36,7 @@ public class BinaryDiagnostic implements Task {
         StringBuilder gamaRateBuilder = new StringBuilder();
         StringBuilder epsilonRateBuilder = new StringBuilder();
         for (int occurrence : bitCounter.values()) {
-            String bit = resolveBit(occurrence, rowCounter);
+            String bit = resolveBit(occurrence, rows.size(), true);
             gamaRateBuilder.append(bit);
             epsilonRateBuilder.append(bit.equals("1") ? "0" : "1");
         }
@@ -60,13 +45,8 @@ public class BinaryDiagnostic implements Task {
         result = gamaRate * epsilonRate;
         log.info("Gama rate binary number: {}, decimal: {}", gamaRateBuilder, gamaRate);
         log.info("Epsilon rate binary number: {}, decimal: {}", epsilonRateBuilder, epsilonRate);
-        log.info("Result is: {}", result);
+        log.info("Result is: {}", result);// 2595824
         return true;
-    }
-
-
-    private String resolveBit(int occurrence, int totalRows) {
-        return totalRows / 2 < occurrence ? "1" : "0";
     }
 
 
