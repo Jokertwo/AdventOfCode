@@ -8,9 +8,12 @@ import lombok.Getter;
 @Getter
 public class Board {
     private final List<List<Item>> board;
+    private boolean winning;
+    private int winNumber;
 
     public Board(List<List<Item>> board) {
         this.board = board;
+        this.winning = false;
     }
 
 
@@ -21,6 +24,8 @@ public class Board {
                 if (number.getNumber() == value) {
                     number.setMarked(true);
                     if (testLine(i) || testRow(j)) {
+                        this.winning = true;
+                        this.winNumber = value;
                         return true;
                     }
                 }

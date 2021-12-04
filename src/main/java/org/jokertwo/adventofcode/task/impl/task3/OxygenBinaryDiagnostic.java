@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class OxygenBinaryDiagnostic extends AbstractBinaryDiagnostic {
 
-    private final static String FILE = "task6/resource.txt";
+    private final static String FILE = "task3/resource.txt";
     private Integer result;
 
     public OxygenBinaryDiagnostic(FileReader fileReader) {

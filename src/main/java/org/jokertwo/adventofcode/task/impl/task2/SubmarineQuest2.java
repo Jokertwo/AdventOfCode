@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 public class SubmarineQuest2 extends AbstractSubmarineQuest {
-    private final static String FILE = "task4/resource.txt";
+    private final static String FILE = "task2/resource.txt";
 
     public SubmarineQuest2(FileReader fileReader) {
         super(FILE, fileReader);
