@@ -3,18 +3,19 @@ package org.jokertwo.adventofcode.task;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import java.util.Map;
 import org.jokertwo.adventofcode.common.FileReader;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j
 public abstract class AbstractTask implements Task {
+    @Getter
     private final String file;
+    @Getter
     private final FileReader fileReader;
 
     public AbstractTask(String file, FileReader fileReader) {
@@ -37,6 +38,5 @@ public abstract class AbstractTask implements Task {
         }
         return rows;
     }
-
 
 }
