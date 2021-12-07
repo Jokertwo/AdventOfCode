@@ -31,12 +31,7 @@ public abstract class AbstractLanternFish extends AbstractTask {
         long[] days = new long[9];
         List<Integer> generation;
         try {
-            generation = readFile()
-                .stream()
-                .map(s -> s.split(","))
-                .flatMap(Stream::of)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+            generation = readIntLine();
         } catch (IOException e) {
             log.error("Unable to read from file: {}", FILE, e);
             return false;

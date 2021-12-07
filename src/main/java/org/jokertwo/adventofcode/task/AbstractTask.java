@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.jokertwo.adventofcode.common.FileReader;
 
@@ -37,6 +39,23 @@ public abstract class AbstractTask implements Task {
             throw e;
         }
         return rows;
+    }
+
+
+    public List<Integer> readIntLine() throws IOException {
+        List<Integer> numbers;
+        try {
+            numbers = readFile()
+                .stream()
+                .map(s -> s.split(","))
+                .flatMap(Stream::of)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        } catch (IOException e) {
+            log.error("Unable to read from file: {}", file, e);
+            throw e;
+        }
+        return numbers;
     }
 
 }
