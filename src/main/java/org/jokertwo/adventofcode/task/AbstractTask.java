@@ -19,6 +19,7 @@ public abstract class AbstractTask implements Task {
     private final String file;
     @Getter
     private final FileReader fileReader;
+    public Integer result;
 
     public AbstractTask(String file, FileReader fileReader) {
         this.file = file;
@@ -56,6 +57,40 @@ public abstract class AbstractTask implements Task {
             throw e;
         }
         return numbers;
+    }
+
+
+    public int[][] convertToMatrix(List<String> lines) {
+        int[][] matrix = new int[lines.size()][findSize(lines.get(0))];
+        for (int i = 0; i < lines.size(); i++) {
+            int[] row = Stream.of(lines.get(i).split(""))
+                .map(Integer::parseInt)
+                .mapToInt(Integer::intValue)
+                .toArray();
+            matrix[i] = row;
+        }
+        return matrix;
+    }
+
+
+    protected int findSize(String line) {
+        return line.split("").length;
+    }
+
+    public void print(int[][] matrix){
+        for (int[] ints : matrix) {
+            for (int anInt : ints) {
+                System.out.print(anInt + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+
+    @Override
+    public Object getResult() {
+        return result;
     }
 
 }
