@@ -91,7 +91,7 @@ public class SmokeBasin2 extends AbstractSmokeBasin {
 
     @Override
     public String getName() {
-        return "Task 18";
+        return "Task 9b";
     }
 
 

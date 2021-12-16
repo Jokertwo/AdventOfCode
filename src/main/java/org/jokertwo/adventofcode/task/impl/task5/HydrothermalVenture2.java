@@ -67,7 +67,7 @@ public class HydrothermalVenture2 extends AbstractHydrothermal {
 
     @Override
     public String getName() {
-        return "Task 10";
+        return "Task 5b";
     }
 
 

@@ -52,7 +52,7 @@ public class BinaryDiagnostic extends AbstractBinaryDiagnostic {
 
     @Override
     public String getName() {
-        return "Task 5";
+        return "Task 3a";
     }
 
 

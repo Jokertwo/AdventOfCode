@@ -61,7 +61,7 @@ public class OxygenBinaryDiagnostic extends AbstractBinaryDiagnostic {
 
     @Override
     public String getName() {
-        return "Task 6";
+        return "Task 3b";
     }
 
 

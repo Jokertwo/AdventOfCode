@@ -16,7 +16,7 @@ public class Crab2 extends AbstractCrab {
 
     @Override
     public String getName() {
-        return "Task 14";
+        return "Task 7b";
     }
 
 

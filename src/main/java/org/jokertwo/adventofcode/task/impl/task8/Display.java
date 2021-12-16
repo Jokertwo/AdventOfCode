@@ -173,7 +173,7 @@ public class Display extends AbstractTask {
 
     @Override
     public String getName() {
-        return "Task 15:";
+        return "Task 8a:";
     }
 
 

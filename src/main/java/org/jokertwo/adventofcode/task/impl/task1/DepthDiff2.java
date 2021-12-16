@@ -64,7 +64,7 @@ public class DepthDiff2 implements Task {
 
     @Override
     public String getName() {
-        return "Task 2";
+        return "Task 1b";
     }
 
 

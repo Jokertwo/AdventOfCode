@@ -58,7 +58,7 @@ public class ErrorScore2 extends AbstractErrorScore {
 
     @Override
     public String getName() {
-        return "Task 20";
+        return "Task 10b";
     }
 
 

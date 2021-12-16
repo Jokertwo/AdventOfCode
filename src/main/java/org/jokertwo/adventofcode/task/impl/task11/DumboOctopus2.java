@@ -49,7 +49,7 @@ public class DumboOctopus2 extends AbstractDumboOctopus {
 
     @Override
     public String getName() {
-        return "Task 22";
+        return "Task 11b";
     }
 
 

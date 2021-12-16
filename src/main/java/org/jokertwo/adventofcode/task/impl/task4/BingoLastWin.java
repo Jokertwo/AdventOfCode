@@ -40,7 +40,7 @@ public class BingoLastWin extends AbstractBingo {
 
     @Override
     public String getName() {
-        return "Task 8";
+        return "Task 4b";
     }
 
 

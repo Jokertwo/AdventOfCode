@@ -36,7 +36,7 @@ public class SubmarineQuest2 extends AbstractSubmarineQuest {
 
     @Override
     public String getName() {
-        return "Task 4";
+        return "Task 2b";
     }
 
 

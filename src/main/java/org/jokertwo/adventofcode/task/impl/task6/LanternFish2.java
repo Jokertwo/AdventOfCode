@@ -16,7 +16,7 @@ public class LanternFish2 extends AbstractLanternFish {
 
     @Override
     public String getName() {
-        return "Task 12";
+        return "Task 6b";
     }
 
 
